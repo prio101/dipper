@@ -1,3 +1,28 @@
-<div class="container mx-auto">
-    <h1>Dipper</h1>
+<div class="jumbotron">
+  <h1>Dipper Dashboard for <%= @current_user.first_name %></h1>
 </div>
+
+<table class="table">
+  <% @projects.each do |project| %>
+  <tr>
+    <th>Project Name: <%= project.name %></th>
+  </tr>
+  <tr>
+    <th>Site Name</th>
+    <th>Site Link</th>
+    <th>Site Status</th>
+    <th>Last Checked</th>
+    <th>Next Check</th>
+  </tr>
+  <tr>
+    <% project.sites.each do |site|%>
+     <% status = 'Working' if site.status.eql?('200') %>
+      <td><%= site.title %></td>
+      <td><%= site.link %></td>
+      <td><a class="btn <%= "btn-success" if status.eql?('Working') %>"><%= status %></a></td>
+      <td><%= site.last_checked.in_time_zone('CET') %></td>
+      <td><%= site.last_checked.in_time_zone('CET') + 1.hour unless site.last_checked.nil?%></td>
+    <% end %>
+  </tr>
+  <% end %>
+</table>

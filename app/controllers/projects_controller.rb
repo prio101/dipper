@@ -20,4 +20,10 @@ class ProjectsController < ApplicationController
 
     def destroy
     end
+
+    private
+
+    def project_params
+     params.require(:projecs).permit(:name, :description, :contact_person_details)   
+    end
 end

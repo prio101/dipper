@@ -20,4 +20,10 @@ class SitesController < ApplicationController
 
     def destroy
     end
+
+    private
+
+    def sites_params
+     params.require(:sites).permit(:title, :link)   
+    end
 end
