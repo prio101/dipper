@@ -1,0 +1,9 @@
+<div class="col-md-5">
+    <p id="notice"><%= notice %></p>
+    <p>Title: <%= @site.title %></p>
+    <p>Link:<%= @site.link %></p>
+    <%= link_to 'Edit', edit_site_path(@site) %> |
+    <%= link_to 'Back', sites_path %>
+
+</div>
+

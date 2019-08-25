@@ -10,6 +10,7 @@
   </head>
 
   <body>
+  <% if user_signed_in? %>
     <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -27,24 +28,27 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="/">Home <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Project</a></li>
-        <li><a href="#">Sites</a></li>
+        <li><%= link_to 'Projects', projects_path%></li>
+        <li><%= link_to 'Sites', sites_path%></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" 
           data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Profile</a></li>
+            <li><%= link_to 'Profile', user_path(current_user)%></li>
             <li><a href="#">Settings</a></li>
           </ul>
         </li>
         <li><a href="#">Apps Integration(Coming Soon) </a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Log Out</a></li>
+      <% if user_signed_in? %>
+        <li><%= link_to('Logout', destroy_user_session_path, method: :delete)%></li>
+      <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+  <% end %>
     <%= yield %>
   </body>
 </html>

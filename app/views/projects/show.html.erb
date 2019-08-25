@@ -1,0 +1,8 @@
+<div class="col-md-6">
+    <p id="notice"><%= notice %></p>
+<p>Title: <%= @project.name %></p>
+<p>Description: <%= @project.description %></p>
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>
+
+</div>

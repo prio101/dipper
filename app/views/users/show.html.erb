@@ -1,0 +1,8 @@
+<div class="col-md-5 col-md-offset-4">
+    <p id="notice"><%= notice %></p>
+    <p>Name: <%= @user.first_name %><%= @user.last_name%></p>
+    <p>Email: <%= @user.email %></p>
+    <%= link_to 'Edit', edit_user_path(current_user) %> |
+    
+
+</div>
